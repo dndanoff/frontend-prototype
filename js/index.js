@@ -1,4 +1,4 @@
-import { isBlank } from './utils/stringUtils.js';
+import { setup } from '../js/redux-setup.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,6 +7,8 @@ class App extends React.Component {
   }
   
   render() {
+    console.log(window.store.getState());
+
     return (
 		<div class="container">
 			IT WORKS FROM REACTJS
