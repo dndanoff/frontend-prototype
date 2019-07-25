@@ -2,7 +2,40 @@ import {ADD_EMPLOYEE, UPDATE_EMPLOYEE, DELETE_EMPLOYEE} from "action-names.js"
 
 
 const initialState = {
-    employees: []
+    employees: [
+        {
+            id: 1,
+            firstName: "Denis",
+            lastName: "Danov",
+            hireDate: null,
+            photoUrl: null,
+            title: {
+                id: 1,
+                name: "Senior Java developer",
+                description: ""
+            },
+            active: true,
+            contacts:[
+                {
+                    id:1,
+                    type:{
+                        id: 1,
+                        name: "E-MAIL",
+                        description: ""
+                    },
+                    value: "denis.danov@dreamix.eu",
+                    priority: 1
+                }
+            ],
+            knownTechnologies:[
+                {
+                    id: 1,
+                    name: "Java",
+                    description: ""
+                }
+            ]
+        }
+    ]
 };
 
 function rootReducer(state = initialState, action) {
