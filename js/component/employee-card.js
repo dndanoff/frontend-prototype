@@ -1,16 +1,18 @@
 export class EmployeeCard extends React.Component {
 	  constructor(props) {
-	    super(props);
-	    this.state = {};
+		super(props);
+	    this.state = {
+
+		};
 	  }
 
 	  render() {
 	    return (
     		<div class="card">
-    		<ReactRouterDOM.NavLink to={/employees/+this.props.info.id}><img class="card-img-top" src={this.props.info.photoUrl} alt={this.props.info.firstName+" "+this.props.info.lastName+" photo"}/></ReactRouterDOM.NavLink>
+    		<ReactRouterDOM.NavLink to={/employees/+this.props.selectedEmployee.id}><img class="card-img-top" src={this.props.selectedEmployee.photoUrl} alt={this.props.selectedEmployee.firstName+" "+this.props.selectedEmployee.lastName+" photo"}/></ReactRouterDOM.NavLink>
 			  <div class="card-body">
-			    <h5 class="card-title">{this.props.info.firstName+" "+this.props.info.lastName}</h5>
-			    <p class="card-text">{this.props.info.title.name}</p>
+			    <h5 class="card-title">{this.props.selectedEmployee.firstName+" "+this.props.selectedEmployee.lastName}</h5>
+			    <p class="card-text">{this.props.selectedEmployee.title.name}</p>
 			  </div>
 			</div>
 	    );

@@ -2,10 +2,10 @@ export class Search extends React.Component {
 	  constructor(props) {
 	    super(props);
 	    this.handleChange = this.handleChange.bind(this);
-	    this.handleClick = this.handleClick.bind(this);
+	    this.handleClearClick = this.handleClearClick.bind(this);
 	    
 	    this.state = {
-	    	searchInput: ""
+	    	searchInput: ''
 	    }
 	  }
 
@@ -17,7 +17,7 @@ export class Search extends React.Component {
 	    this.props.onSearch(newValue);
 	  }
 	  
-	  handleClick(){
+	  handleClearClick(){
 		  this.setState((prevState, props) => ({
 				searchInput: ""
 		  }));
@@ -31,7 +31,7 @@ export class Search extends React.Component {
     		<div class="input-group mb-3">
     		  <input type="text" value={input}  onChange={this.handleChange} class="form-control" placeholder="employee name" aria-label="employee name" aria-describedby="basic-addon2" />
     		  <div class="input-group-append">
-    		    <button class="btn btn-outline-secondary" type="button" onClick={this.handleClick}>X</button>
+    		    <button class="btn btn-outline-secondary" type="button" onClick={this.handleClearClick}>X</button>
     		  </div>
     		</div>
 	    );

@@ -8,7 +8,8 @@ const initialState = {
             firstName: "Denis",
             lastName: "Danov",
             hireDate: null,
-            photoUrl: null,
+            photoUrl: "https://dreamix.eu/images/team/Denis_Danov_Java-Expert.jpg",
+            birthDate: "24-04-1991",
             title: {
                 id: 1,
                 name: "Senior Java developer",

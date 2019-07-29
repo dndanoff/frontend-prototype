@@ -1,32 +1,25 @@
-export class EmployeesPage extends React.Component {
+import {Search} from '../component/search.js';
+import {EmployeeCard} from '../component/employee-card.js';
+
+class EmployeesPage extends React.Component {
 	  constructor(props) {
 	    super(props);
 	    this.handleSearch = this.handleSearch.bind(this);
 
 	    this.state = {
-			employees: [],
-			originalEmployees: [],
-			error: ""
+			currentlyDisplayedEmployees: this.props.employees,
 		};
-	  }
-
-	  componentDidMount() {
-
-	  }
-
-	  componentWillUnmount() {
-	    
 	  }
 	  
 	  handleSearch(input){
 		input = input.toUpperCase();
 		let filteredEmployees = [];
 		
-		if(isEmpty(input)){
-			filteredEmployees = this.state.originalEmployees;
+		if(!input){
+			filteredEmployees = this.props.employees;
 		}else{
-			for (let i = 0; i < this.state.originalEmployees.length; i++) {
-				let employee = this.state.originalEmployees[i];
+			for (let i = 0; i < this.props.employees.length; i++) {
+				let employee = this.props.employees[i];
 				let fullName = (employee.firstName+" "+employee.lastName).toUpperCase();
 				if(fullName.startsWith(input)){
 					filteredEmployees.push(employee);
@@ -35,22 +28,14 @@ export class EmployeesPage extends React.Component {
 		}
 		
 		this.setState((prevState, props) => ({
-    		employees: filteredEmployees
+    		currentlyDisplayedEmployees: filteredEmployees
 		}));
 	  }
 	  	
 	  render() {
-		  if(!isEmpty(this.state.error)){
-			  return (
-				<div id="error" class="alert alert-warning" role="alert">
-	  				{this.state.error}
-	    		</div>
-    		);
-		  }
-
 		let cols = [];
-		for (var i = 0; i < this.state.employees.length; i++) {
-			cols.push(<EmployeeCard key={this.state.employees[i].id} info={this.state.employees[i]}/>);
+		for (var i = 0; i < this.state.currentlyDisplayedEmployees.length; i++) {
+			cols.push(<EmployeeCard key={this.state.currentlyDisplayedEmployees[i].id} selectedEmployee={this.state.currentlyDisplayedEmployees[i]}/>);
 		}
 		  
 	    return (
@@ -67,3 +52,13 @@ export class EmployeesPage extends React.Component {
 	    );
 	  }
 }
+
+const mapStateToProps = state => {
+	return {
+		employees: state.employees,
+	};
+};
+
+const EmployeesPageConnected = ReactRedux.connect(mapStateToProps)(EmployeesPage);
+
+export default EmployeesPageConnected;

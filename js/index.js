@@ -2,8 +2,8 @@
 import store from "../js/store.js";
 import {Menu} from '../js/component/menu.js';
 import {LandingPage} from '../js/page/landing.js';
-import {EmployeesPage} from '../js/page/employees-list.js';
-import {EmployeeDetailsPage} from '../js/page/employees-list.js';
+import EmployeeDetailsPageConnected from '../js/page/employee-details.js';
+import EmployeesPageConnected from '../js/page/employees-list.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,16 +12,14 @@ class App extends React.Component {
   }
   
   render() {
-    console.log(store.getState());
-
     return (
       <ReactRouterDOM.BrowserRouter>
       <div class="container">
         <Menu />
         <div className="content">
           <ReactRouterDOM.Route exact path="/" component={LandingPage}/>
-          <ReactRouterDOM.Route exact path="/employees" render={(props) => <EmployeesPage {...props} limit={100}/>}/>
-          <ReactRouterDOM.Route path="/employees/:id" component={EmployeeDetailsPage}/>
+          <ReactRouterDOM.Route exact path="/employees" component={EmployeesPageConnected}/>
+          <ReactRouterDOM.Route path="/employees/:id" component={EmployeeDetailsPageConnected}/>
         </div>
       </div>
       </ReactRouterDOM.BrowserRouter>
